@@ -70,7 +70,7 @@ export function Footer() {
                     )}
                     aria-label={platform}
                   >
-                    {typeof Icon === 'function' ? (
+                    {platform === 'threads' || platform === 'medium' ? (
                       <Icon />
                     ) : (
                       <Icon size={20} strokeWidth={1.5} />
