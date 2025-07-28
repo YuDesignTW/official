@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #FF4500;
+    --primary-dark: #E03E00;
+    --primary-light: #FF6A33;
+    --secondary: #1A1A1A;
+    --secondary-light: #666666;
+    --accent: #FFFFFF;
+    --background: #FFFFFF;
+    --background-light: #FEFEFE;
+    --background-gray: #F8F9FA;
+    --text-dark: #1A1A1A;
+    --text-gray: #666666;
+    --text-light: #888888;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  /* 隱藏滾動條但保持滾動功能 */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 玻璃態效果 */
+  .glass {
+    @apply backdrop-blur-md bg-white/80;
+  }
+
+  /* 極簡文字樣式 */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .text-minimal {
+    @apply text-secondary/60 font-light tracking-wide;
+  }
+
+  .text-brand-orange {
+    @apply text-primary font-black tracking-tight;
+  }
+
+  .text-brand-gray {
+    @apply text-secondary/80 font-normal;
+  }
+
+  /* 3D 變換 */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* 自定義動畫延遲 */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+}
+
+/* 平滑滾動 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 品牌選擇文字樣式 */
+::selection {
+  @apply bg-primary text-white;
+}
+
+/* 橘色品牌光標 */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #FF4500;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+}
+
+.cursor-triangle {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;  
+  border-bottom: 10px solid #FF4500;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.15s ease-out;
+  transform: translate(-6px, -20px);
+}
+
+/* 品牌載入動畫 */
+.loader {
+  border: 2px solid transparent;
+  border-top-color: #FF4500;
+  border-radius: 50%;
+  animation: spin 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 圖片懸浮效果 */
+.image-hover {
+  @apply overflow-hidden;
+}
+
+.image-hover img {
+  @apply transition-transform duration-500 ease-out;
+}
+
+.image-hover:hover img {
+  @apply scale-110;
+}
+
+/* 極簡按鈕效果 */
+.minimal-button {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.minimal-button:hover {
+  @apply bg-black/5;
+}
+
+/* 極簡網格效果 */
+.grid-noise {
+  background-image: 
+    linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 極簡字體樣式 */
+.text-hero {
+  @apply text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-black tracking-ultra-tight leading-none;
+}
+
+.text-display {
+  @apply text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-none;
+}
+
+.text-heading {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight;
+}
+
+.text-subheading {
+  @apply text-xl md:text-2xl lg:text-3xl font-light tracking-wide leading-relaxed;
+}
+
+.text-body-large {
+  @apply text-lg md:text-xl font-light leading-relaxed;
+}
+
+.text-body {
+  @apply text-base md:text-lg font-normal leading-relaxed;
+}
+
+.text-caption {
+  @apply text-sm md:text-base font-light tracking-wide opacity-70;
+}
+
+.text-minimal {
+  @apply font-light tracking-wide text-black/60;
+}
+
+.text-mono-number {
+  @apply font-mono font-light tracking-wider text-black/40;
+}
+
+/* 輕量化動畫 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  opacity: 0;
+  animation: fadeInScale 1s ease-out forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+
+/* 滾動線動畫 */
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-line-follow {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(400%);
+    opacity: 0;
+  }
+}
+
+.animate-scroll-line {
+  animation: scroll-line 2s infinite ease-in-out;
+}
+
+.animate-scroll-line-follow {
+  animation: scroll-line-follow 2s infinite ease-in-out;
+}

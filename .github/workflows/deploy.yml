@@ -1,0 +1,53 @@
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout 程式碼
+      uses: actions/checkout@v4
+      
+    - name: 設定 Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
+        
+    - name: 設定 pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
+    - name: 安裝依賴
+      run: pnpm install --frozen-lockfile
+      
+    - name: 設定 Pages
+      uses: actions/configure-pages@v4
+      with:
+        static_site_generator: next
+        
+    - name: 建置專案
+      run: pnpm build
+      env:
+        NODE_ENV: production
+        
+    - name: 上傳建置檔案
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./out
+        
+    - name: 部署到 GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
