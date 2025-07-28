@@ -3,10 +3,10 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { RESULTS, TESTIMONIALS } from '@/lib/constants'
+import { RESULTS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import { Quote } from 'lucide-react'
+// import Image from 'next/image'
+// import { Quote } from 'lucide-react'
 
 function CountUp({ end, duration = 2 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -116,8 +116,8 @@ export function ResultsSection() {
           })}
         </div>
 
-        {/* 客戶見證 */}
-        <motion.div
+        {/* 客戶見證 - 暫時註解，等待 TESTIMONIALS 資料 */}
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -142,17 +142,14 @@ export function ResultsSection() {
                 'border border-gray-200 dark:border-gray-700',
                 'shadow-xl'
               )}>
-                {/* 引號圖標 */}
                 <Quote className="absolute top-8 left-8 w-12 h-12 text-primary/20" />
                 
-                {/* 內容 */}
                 <blockquote className="relative z-10 mb-8">
                   <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed italic">
                     {testimonial.content}
                   </p>
                 </blockquote>
                 
-                {/* 作者資訊 */}
                 <div className="flex items-center gap-4">
                   <div className="relative w-16 h-16 rounded-full overflow-hidden">
                     <Image
@@ -172,12 +169,11 @@ export function ResultsSection() {
                   </div>
                 </div>
 
-                {/* 背景裝飾 */}
                 <div className="absolute -inset-px bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )
