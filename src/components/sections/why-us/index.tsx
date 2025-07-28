@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { CTA_BUTTONS } from '@/lib/constants'
+import { getAssetPath } from '@/lib/config'
 
 // 數據卡片資料
 const METRICS_DATA = [
@@ -126,7 +127,7 @@ export function WhyUs() {
               {/* 左側圖片容器 */}
               <div className="relative w-full h-96 rounded-2xl overflow-hidden bg-gray-100 shadow-xl group cursor-pointer">
                 <Image
-                  src="/images/whyus.png"
+                  src={getAssetPath("/images/whyus.png")}
                   alt="Yuga - 商業製作人"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"

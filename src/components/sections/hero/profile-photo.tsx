@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import Image from 'next/image'
+import { getAssetPath } from '@/lib/config'
 
 /**
  * 個人照片組件 - 夾槽型設計
@@ -45,7 +46,7 @@ export function ProfilePhoto() {
         {/* 夾槽型照片容器 */}
         <div className="relative w-full h-full overflow-hidden" style={{ borderRadius: '50px' }}>
           <Image
-            src="/images/yuga-photo.png"
+            src={getAssetPath("/images/yuga-photo.png")}
             alt="Yuga - Designer & Developer"
             fill
             sizes="(max-width: 768px) 64px, (max-width: 1024px) 80px, 96px"

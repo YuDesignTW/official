@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { getAssetPath } from '@/lib/config'
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -37,7 +38,7 @@ export function Navbar() {
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Image
-              src={isScrolled ? "/images/dark_logo.png" : "/images/logo.png"}
+              src={isScrolled ? getAssetPath("/images/dark_logo.png") : getAssetPath("/images/logo.png")}
               alt="Yuga Logo"
               width={120}
               height={40}
