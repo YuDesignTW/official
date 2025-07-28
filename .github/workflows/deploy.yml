@@ -31,7 +31,7 @@ jobs:
         cache: 'pnpm'
         
     - name: 安裝依賴
-      run: pnpm install --frozen-lockfile
+      run: pnpm install
       
     - name: 設定 Pages
       uses: actions/configure-pages@v4
