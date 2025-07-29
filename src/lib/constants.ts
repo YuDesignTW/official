@@ -63,9 +63,9 @@ export const SERVICES = [
   },
   {
     id: 'development',
-    title: ' AI產品開發',
+    title: ' 網站、產品開發',
     description: '兩週把你的點子變服務，快速打造數位產品',
-    fullDescription: '結合最新AI技術與No-Code工具，以低成本、高效率的方式快速開發產品原型和MVP，縮短產品上市時間。',
+    fullDescription: '熟悉Html,CSS, JS,以及 React,Next.js,Tailwind CSS架構，以低成本、高效率的方式快速開發產品原型和MVP，縮短產品上市時間。',
     icon: 'Code2',
     color: 'primary-dark',
     features: [
