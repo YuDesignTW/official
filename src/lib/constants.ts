@@ -256,7 +256,7 @@ export const PROJECTS = [
       },
       {
         type: 'video',
-        src: './images/project/project 2/project.mp4',
+        src: './images/project/project%202/project.mp4',
         alt: '災備工具操作演示',
         caption: '完整的災備工具使用流程展示'
       },

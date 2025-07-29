@@ -231,14 +231,27 @@ function ProjectBlock({
                 muted
                 loop
                 playsInline
+                preload="metadata"
+                controls
                 className="w-full h-full object-cover"
+                onError={(e) => console.error('Video error:', e)}
+                onLoadStart={() => console.log('Video loading started:', block.src)}
+                onCanPlay={() => console.log('Video can play:', block.src)}
               >
-                您的瀏覽器不支援影片播放。
+                <source src={block.src} type="video/mp4" />
+                <source src={block.src.replace('.mp4', '.webm')} type="video/webm" />
+                您的瀏覽器不支援影片播放。請嘗試更新瀏覽器或使用其他瀏覽器。
               </video>
             </div>
             {block.caption && (
               <p className="text-center text-gray-500 mt-6 text-sm">
                 {block.caption}
+              </p>
+            )}
+            {/* 除錯資訊 - 開發時可見 */}
+            {process.env.NODE_ENV === 'development' && (
+              <p className="text-xs text-gray-400 mt-2 text-center">
+                Video path: {block.src}
               </p>
             )}
           </div>
