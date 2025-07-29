@@ -24,7 +24,7 @@ export const CTA_BUTTONS = {
 // 外部連結管理
 export const EXTERNAL_LINKS = {
   consultation: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1xJAiYovhU3xe0l7-D2C36ggtqpCTqUFfrDmNex1L02TObkZoGW6BFchZuPcPY-c6lNrWe4f_B',
-  contact: '#contact', // 滾動到聯繫區塊
+  contact: 'mailto:yu.design.tw@gmail.com', // 直接發送郵件
 } as const
 
 export const NAVIGATION = [
@@ -160,7 +160,7 @@ export const PROJECTS = [
     title: '海外破百萬月營收的產品，從0開始打造',
     subtitle: '全球首款雙模式 PC 攝影機的完整產品旅程',
     description: '從無到有打造自有攝影鏡頭產品，主導「市場需求 → MVP驗證 → 上市營運」完整旅程，成功進軍 7 國市場。',
-    image: '/images/project/project 1/product-2.jpg',
+    image: './images/project/project 1/product-2.jpg',
     tags: ['產品開發', 'IoT產品', '跨境電商', '營運策略', '敏捷行銷'],
     duration: '12 個月',
     role: '產品經理 / 商業策略顧問',
@@ -181,8 +181,8 @@ export const PROJECTS = [
       {
         type: 'gallery',
         images: [
-          { src: '/images/project/project 1/product-1.jpg', alt: '雙模式攝影機產品展示' },
-          { src: '/images/project/project 1/product-2.jpg', alt: '產品功能特寫' }
+          { src: './images/project/project 1/product-1.jpg', alt: '雙模式攝影機產品展示' },
+          { src: './images/project/project 1/product-2.jpg', alt: '產品功能特寫' }
         ]
       },
 
@@ -194,7 +194,7 @@ export const PROJECTS = [
       {
         type: 'gallery',
         images: [
-          { src: '/images/project/project 1/product-mkt-1.jpg', alt: 'SEO優化策略執行' },
+          { src: './images/project/project 1/product-mkt-1.jpg', alt: 'SEO優化策略執行' },
         ]
       },
       {
@@ -205,8 +205,8 @@ export const PROJECTS = [
       {
         type: 'gallery',
         images: [
-          { src: '/images/project/project 1/product-mkt-2.jpg', alt: 'KOL合作與內容行銷' },
-          { src: '/images/project/project 1/product-mkt-3.jpg', alt: 'EDM精準行銷' }
+          { src: './images/project/project 1/product-mkt-2.jpg', alt: 'KOL合作與內容行銷' },
+          { src: './images/project/project 1/product-mkt-3.jpg', alt: 'EDM精準行銷' }
         ]
       },
 
@@ -237,7 +237,7 @@ export const PROJECTS = [
     title: '從靈感到 70 萬營收：只花12小時打造的災備工具',
     subtitle: '一人完成產品開發、設計與推廣的完整實戰',
     description: '因應2025年地震大預言，我發現防災資訊分散問題，12小時內打造出「居家避難準備指南」工具，創造70萬營收。',
-    image: '/images/project/project 2/project.png',
+    image: './images/project/project 2/project.png',
     tags: ['AI工具開發', '快速實作', 'MVP驗證', '內容電商', '社群成長'],
     duration: '9 小時',
     role: '全端開發者 / 產品設計師',
@@ -256,7 +256,7 @@ export const PROJECTS = [
       },
       {
         type: 'video',
-        src: '/images/project/project 2/project.mp4',
+        src: './images/project/project 2/project.mp4',
         alt: '災備工具操作演示',
         caption: '完整的災備工具使用流程展示'
       },
@@ -293,7 +293,7 @@ export const PROJECTS = [
     title: '鄉村民宿也能數位轉型：打造不需要工程師的訂房系統',
     subtitle: '用最簡單的方式解決偏鄉旅宿經營痛點',
     description: '為桃園鄉間民宿打造 Google Sheets 整合的訂房系統，搭配圈層行銷策略，讓偏鄉民宿也能數位轉型。',
-    image: '/images/project/project 3/project3.png',
+    image: './images/project/project 3/project3.png',
     tags: ['旅宿品牌', 'NoCode開發', '品牌影像', '圈層行銷', '數位轉型'],
     duration: '2 天',
     role: 'NoCode 開發者 / 品牌策略顧問',
@@ -316,7 +316,7 @@ export const PROJECTS = [
       },
       {
         type: 'video',
-        src: '/images/project/project 3/project3.mov',
+        src: './images/project/project 3/project3.mov',
         alt: 'JiSpace 鄉間民宿訂房系統演示',
         caption: 'JiSpace 鄉間民宿訂房系統操作流程'
       },
@@ -334,7 +334,7 @@ export const PROJECTS = [
       },
       {
         type: 'video',
-        src: '/images/project/project 3/project3-mkt.mp4',
+        src: './images/project/project 3/project3-mkt.mp4',
         alt: '品牌影片',
         caption: '品牌影片'
       },

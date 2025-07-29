@@ -3,7 +3,7 @@
 import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { CTA_BUTTONS } from '@/lib/constants'
+import { CTA_BUTTONS, EXTERNAL_LINKS } from '@/lib/constants'
 import { getAssetPath } from '@/lib/config'
 
 // 數據卡片資料
@@ -139,12 +139,12 @@ export function WhyUs() {
                 
                 {/* Hover 時出現的聯絡按鈕 */}
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                  <button
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="px-8 py-4 bg-white text-black font-semibold rounded-xl transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-lg hover:shadow-xl hover:bg-primary hover:text-white"
+                  <a
+                    href={EXTERNAL_LINKS.contact}
+                    className="px-8 py-4 bg-white text-black font-semibold rounded-xl transform -translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-lg hover:shadow-xl hover:bg-primary hover:text-white inline-block"
                   >
                     {CTA_BUTTONS.contact}
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>
