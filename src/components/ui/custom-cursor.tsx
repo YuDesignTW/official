@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export function CustomCursor() {
   const [isPointer, setIsPointer] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
   
@@ -13,6 +14,14 @@ export function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig)
 
   useEffect(() => {
+    // 檢測是否為行動裝置
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    }
+    
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 4)
       cursorY.set(e.clientY - 4)
@@ -30,18 +39,27 @@ export function CustomCursor() {
       setIsPointer(!!isClickable)
     }
 
-    window.addEventListener('mousemove', moveCursor)
-    window.addEventListener('mousemove', checkPointer)
+    // 只在非行動裝置上啟用滑鼠特效
+    if (!isMobile) {
+      window.addEventListener('mousemove', moveCursor)
+      window.addEventListener('mousemove', checkPointer)
+    }
 
     return () => {
       window.removeEventListener('mousemove', moveCursor)
       window.removeEventListener('mousemove', checkPointer)
+      window.removeEventListener('resize', checkIsMobile)
     }
-  }, [cursorX, cursorY])
+  }, [cursorX, cursorY, isMobile])
+
+  // 在行動裝置上不顯示自定義遊標
+  if (isMobile) {
+    return null
+  }
 
   return (
     <>
-      {/* 大橘色圓形游標 */}
+      {/* 大橘色圓形遊標 */}
       <motion.div
         className="fixed pointer-events-none z-[9999] rounded-full bg-primary"
         animate={{

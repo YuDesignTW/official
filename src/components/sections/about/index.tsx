@@ -93,7 +93,7 @@ export function About() {
             id="about-typewriter"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             className="py-12 md:py-16 pb-36 md:pb-42"
           >
             <div className="text-left max-w-4xl h-48 md:h-56 lg:h-64 xl:h-72">

@@ -10,27 +10,45 @@ import { getAssetPath } from '@/lib/config'
  */
 export function ProfilePhoto() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: true,
   })
 
   useEffect(() => {
+    // 檢測是否為行動裝置
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768) // md breakpoint
+    }
+    
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+
     const handleMouseMove = (e: MouseEvent) => {
+      // 在手機版不執行滑鼠跟隨效果
+      if (isMobile) return
+      
       const { clientX, clientY } = e
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
       
       // 計算相對中心點的偏移，並限制移動範圍
-      const deltaX = (clientX - centerX) * 0.015 // 更細微的移動
-      const deltaY = (clientY - centerY) * 0.015
+      const deltaX = (clientX - centerX) * 0.025 // 增加移動範圍
+      const deltaY = (clientY - centerY) * 0.025
       
       setMousePosition({ x: deltaX, y: deltaY })
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove)
+    }
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('resize', checkIsMobile)
+    }
+  }, [isMobile])
 
   return (
     <div ref={ref} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 -mt-4">
@@ -39,7 +57,9 @@ export function ProfilePhoto() {
           inView ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
         }`}
         style={{
-          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+          transform: isMobile 
+            ? 'none' 
+            : `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
           transitionDelay: '1.5s',
         }}
       >

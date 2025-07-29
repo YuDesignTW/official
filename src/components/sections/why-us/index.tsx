@@ -125,7 +125,7 @@ export function WhyUs() {
               className="max-w-sm"
             >
               {/* 左側圖片容器 */}
-              <div className="relative w-full h-96 rounded-2xl overflow-hidden bg-gray-100 shadow-xl group cursor-pointer">
+              <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden bg-gray-100 shadow-xl group cursor-pointer">
                 <Image
                   src={getAssetPath("/images/whyus.png")}
                   alt="Yuga - 商業製作人"
