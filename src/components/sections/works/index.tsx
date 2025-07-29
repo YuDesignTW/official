@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { ProjectCard } from './project-card'
-import { ProjectDetail } from './project-detail'
 import { PROJECTS } from '@/lib/constants'
 
 /**
@@ -14,8 +12,6 @@ export function Works() {
     threshold: 0.1,
     triggerOnce: true,
   })
-  
-  const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[number] | null>(null)
 
   return (
     <section id="works" className="py-32 bg-gray-50">
@@ -45,7 +41,6 @@ export function Works() {
               key={project.id}
               project={project}
               index={index}
-              onClick={() => setSelectedProject(project)}
             />
           ))}
         </div>
@@ -59,11 +54,6 @@ export function Works() {
         />
       </div>
 
-      {/* 專案詳細 Modal */}
-      <ProjectDetail 
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </section>
   )
 }

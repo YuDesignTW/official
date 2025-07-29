@@ -157,111 +157,214 @@ export const ANIMATIONS = {
 export const PROJECTS = [
   {
     id: 'project-1',
-    title: '品牌重塑專案',
-    subtitle: '協助科技新創公司完整品牌形象重塑',
-    description: '協助科技新創公司完整品牌形象重塑，包含識別設計、網站建置與行銷策略規劃。',
-    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
-    tags: ['品牌設計', 'UI/UX', '行銷策略'],
-    duration: '3 個月',
-    role: '品牌設計師 / 策略顧問',
+    title: '海外破百萬月營收的產品，從0開始打造',
+    subtitle: '全球首款雙模式 PC 攝影機的完整產品旅程',
+    description: '從無到有打造自有攝影鏡頭產品，主導「市場需求 → MVP驗證 → 上市營運」完整旅程，成功進軍 7 國市場。',
+    image: '/images/project/project 1/product-2.jpg',
+    tags: ['產品開發', 'IoT產品', '跨境電商', '營運策略', '敏捷行銷'],
+    duration: '12 個月',
+    role: '產品經理 / 商業策略顧問',
     // 詳細內容區塊 - 支援多種內容類型
     detailBlocks: [
       {
         type: 'hero',
-        title: '品牌重塑專案',
-        subtitle: '從零開始打造科技新創的品牌識別',
-        description: '為一家專注於AI解決方案的新創公司，重新定義品牌策略、視覺識別與數位體驗。'
+        title: '海外破百萬月營收的產品，從0開始打造',
+        subtitle: '全球首款雙模式 PC 攝影機的完整產品旅程',
+        description: '你是否也有一個好產品，卻不知道怎麼賣進國際？從無到有打造出第一款自有攝影鏡頭產品，並規劃其 SaaS 工具，以及上市規劃，主導產品從「市場需求 → MVP驗證 → 上市營運」的完整旅程。'
       },
       {
         type: 'text',
-        title: '專案背景',
-        content: '客戶是一家剛成立兩年的AI技術公司，擁有優秀的技術團隊，但缺乏清晰的品牌定位和專業的視覺形象。隨著公司業務快速發展，急需建立能夠傳達專業性和創新性的品牌形象。'
+        title: '市場機會與挑戰',
+        content: '疫情期間遠距工作興起，市場上的攝影設備要麼太專業複雜，要麼畫質不佳。我們發現了一個機會：打造一款既專業又易用的攝影設備，能同時滿足工作會議和內容創作需求，透過整個產品開發流程，從用戶需求調研、競品分析、功能規劃到供應鏈管理。產品的核心創新在於「雙模式」設計 - 既能作為高畫質會議攝影機，也能切換為專業攝影設備，解決用戶的多重需求。'
       },
+
       {
-        type: 'image',
-        src: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&q=80',
-        alt: '品牌設計過程',
-        caption: '品牌識別設計發展過程'
-      },
-      {
-        type: 'text',
-        title: '解決方案',
-        content: '我們從品牌策略開始，深入了解目標客群與市場定位，然後設計了完整的視覺識別系統，包含Logo、色彩、字體、應用規範等。最後建置了響應式網站，完整呈現品牌價值。'
-      },
-      {
-        type: 'results',
-        title: '專案成果',
-        metrics: [
-          { label: '品牌知名度提升', value: '300%' },
-          { label: '網站轉換率', value: '4.2%' },
-          { label: '客戶詢問增加', value: '250%' }
+        type: 'gallery',
+        images: [
+          { src: '/images/project/project 1/product-1.jpg', alt: '雙模式攝影機產品展示' },
+          { src: '/images/project/project 1/product-2.jpg', alt: '產品功能特寫' }
         ]
+      },
+
+      {
+        type: 'text',
+        title: '行銷策略與執行',
+        content: '產品開發完成後，最大的挑戰是如何快速打開國際市場。我制定了「以面的方式做行銷矩陣」策略，同時佈局多個行銷管道，形成完整的流量漏斗，讓每個接觸點都能互相加乘，達到 1+1>2 的效果。'
+      },
+      {
+        type: 'gallery',
+        images: [
+          { src: '/images/project/project 1/product-mkt-1.jpg', alt: 'SEO優化策略執行' },
+        ]
+      },
+      {
+        type: 'text',
+        title: '全球市場拓展成果',
+        content: '透過完整的行銷矩陣：SEO 優化提升自然流量、KOL 合作建立品牌信任、EDM 精準觸達目標客群，成功將產品推向國際。針對不同市場特性調整在地化策略，最終成功進軍美國 Amazon、歐洲、日本等 7 國市場，流量轉換率翻倍成長。'
+      },
+      {
+        type: 'gallery',
+        images: [
+          { src: '/images/project/project 1/product-mkt-2.jpg', alt: 'KOL合作與內容行銷' },
+          { src: '/images/project/project 1/product-mkt-3.jpg', alt: 'EDM精準行銷' }
+        ]
+      },
+
+      {
+        type: 'services',
+        title: '提供服務',
+        subtitle: '打造專屬於你的行銷漏斗',
+        description: '全方位營銷策略，獨家AI 自動化工具量產你的行銷內容，突破單點思維，用面的方式打造你內容：',
+        services: [
+          { name: '品牌官網' },
+          { name: 'SEO' },
+          { name: '文章' },
+          { name: '社群經營' },
+          { name: '廣告操盤' },
+          { name: '口碑計畫' },
+          { name: '聯盟行銷' }
+        ]
+      },
+      {
+        type: 'quote',
+        content: '我不只懂產品策略與用戶洞察，更能從商業角度整合設計、開發與行銷，幫你打造出可賺錢的產品。',
+        author: 'Yuga'
       }
     ]
   },
   {
     id: 'project-2',
-    title: 'AI 驅動產品開發',
-    subtitle: '2週內完成 MVP 開發功能產品',
-    description: '運用AI 技術，2週內完成 MVP 開發功能產品。',
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
-    tags: ['產品開發', 'AI整合', 'No-Code'],
-    duration: '2 週',
-    role: '產品經理 / 技術顧問',
+    title: '從靈感到 70 萬營收：只花12小時打造的災備工具',
+    subtitle: '一人完成產品開發、設計與推廣的完整實戰',
+    description: '因應2025年地震大預言，我發現防災資訊分散問題，12小時內打造出「居家避難準備指南」工具，創造70萬營收。',
+    image: '/images/project/project 2/project.png',
+    tags: ['AI工具開發', '快速實作', 'MVP驗證', '內容電商', '社群成長'],
+    duration: '9 小時',
+    role: '全端開發者 / 產品設計師',
     detailBlocks: [
       {
         type: 'hero',
-        title: 'AI 驅動產品開發',
-        subtitle: '快速原型到產品上線的完整流程',
-        description: '運用最新的AI工具與No-Code平台，在短時間內將想法轉化為可運行的產品。'
+        title: '從靈感到 70 萬營收：只花12小時打造的災備工具',
+        subtitle: '一人完成產品開發、設計與推廣的完整實戰',
+        description: '你可能會想：「一人能完成產品開發、設計與推廣嗎？」我會說：可以，而且還能賺錢。'
+      },
+
+      {
+        type: 'text',
+        title: '快速開發實現',
+        content: '我用 9 小時打造出「居家避難準備指南」網頁工具，整合了多項技術與商業策略：AI 協作產出資訊架構、自行設計 UI、圖像與 RWD 前端、串連蝦皮賣場精選高CP防災商品。'
+      },
+      {
+        type: 'video',
+        src: '/images/project/project 2/project.mp4',
+        alt: '災備工具操作演示',
+        caption: '完整的災備工具使用流程展示'
+      },
+      {
+        type: 'link-preview',
+        url: 'https://yudesigntw.github.io/Disaster_Preparation_List/landing',
+        title: '居家避難準備指南',
+        description: '12小時打造的災備工具，整合防災資訊與商品推薦的完整解決方案',
+        domain: 'yudesigntw.github.io'
+      },
+      {
+        type: 'results',
+        title: '驚人成果表現',
+        metrics: [
+          { label: '社群觸及流量', value: '15萬+' },
+          { label: '兩個月營收', value: '70+萬' },
+          { label: '社群分享數', value: '3,000+' }
+        ]
       },
       {
         type: 'text',
-        title: '挑戰與目標',
-        content: '客戶需要在極短時間內驗證商業想法，傳統開發週期太長且成本過高。我們運用AI輔助開發和No-Code工具，大幅縮短開發時程。'
+        title: '技術整合與商業洞察',
+        content: '這個案例不只展示了我的技術整合力，更說明：當我們用心為需求者設計，市場自然會有回饋。收到國外使用者主動詢問授權合作，證明產品的國際化潛力。'
       },
       {
-        type: 'image',
-        src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-        alt: 'AI開發流程',
-        caption: 'AI輔助開發的完整工作流程'
-      },
-      {
-        type: 'text',
-        title: '技術實現',
-        content: '結合OpenAI API、Bubble平台、Figma設計，建立了一套完整的快速開發流程。從需求分析到產品上線，全程運用AI工具提升效率。'
+        type: 'quote',
+        content: '真正的產品力不在於技術有多複雜，而在於能否精準解決用戶痛點，並快速驗證市場需求。',
+        author: 'Yuga'
       }
     ]
   },
   {
     id: 'project-3',
-    title: '電商平台優化',
-    subtitle: '透過數據驅動提升用戶體驗',
-    description: '透過使用者體驗優化與數據分析，將轉換率提升300%，營收成長6倍。',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-    tags: ['電商優化', '數據分析', 'UX設計'],
-    duration: '4 個月',
-    role: 'UX顧問 / 數據分析師',
+    title: '鄉村民宿也能數位轉型：打造不需要工程師的訂房系統',
+    subtitle: '用最簡單的方式解決偏鄉旅宿經營痛點',
+    description: '為桃園鄉間民宿打造 Google Sheets 整合的訂房系統，搭配圈層行銷策略，讓偏鄉民宿也能數位轉型。',
+    image: '/images/project/project 3/project3.png',
+    tags: ['旅宿品牌', 'NoCode開發', '品牌影像', '圈層行銷', '數位轉型'],
+    duration: '2 天',
+    role: 'NoCode 開發者 / 品牌策略顧問',
     detailBlocks: [
       {
         type: 'hero',
-        title: '電商平台優化',
-        subtitle: '數據驅動的用戶體驗改善',
-        description: '透過深度數據分析與用戶研究，重新設計購物流程，大幅提升轉換率與營收。'
+        title: '鄉村民宿也能數位轉型：打造不需要工程師的訂房系統',
+        subtitle: '兩天完成 NoCode 開發，解決偏鄉旅宿經營痛點',
+        description: '你是否曾想過：小型民宿也能擁有專屬的訂房網站，還能不用進後台就完成管理？這是我為桃園鄉間民宿量身打造的數位轉型解決方案。'
       },
       {
         type: 'text',
-        title: '現況分析',
-        content: '原有電商平台雖然流量不錯，但轉換率僅有1.2%，購物車放棄率高達78%。透過用戶行為分析發現了關鍵問題點。'
+        title: '發現真實痛點',
+        content: '這是一間位在桃園鄉間的民宿，他們長期透過手動對帳與 IG 私訊接單，錯漏不斷、耗費大量時間。傳統的訂房系統對小型民宿來說太複雜且成本過高，但手動管理又效率低落，這個矛盾正是我需要解決的核心問題。'
       },
       {
+        type: 'text',
+        title: '技術解決方案',
+        content: '為了解決業者的實際痛點快速開發了一套連接 Google Sheets 的訂房網站。這套系統實現了兩個關鍵功能：訪客可即時查看房況並完成訂房，業者只需打開 Google Sheets 即可編輯房型與價格，完全不必進後台管理。'
+      },
+      {
+        type: 'video',
+        src: '/images/project/project 3/project3.mov',
+        alt: 'JiSpace 鄉間民宿訂房系統演示',
+        caption: 'JiSpace 鄉間民宿訂房系統操作流程'
+      },
+      {
+        type: 'link-preview',
+        url: 'https://jispace.webflow.io/',
+        title: 'JiSpace 鄉間民宿訂房系統',
+        description: '整合 Google Sheets 的 NoCode 訂房解決方案，讓小型民宿也能輕鬆數位化經營',
+        domain: 'jispace.webflow.io'
+      },
+      {
+        type: 'text',
+        title: '圈層行銷策略',
+        content: '幫助客戶在流量沙漠的偏鄉經營民宿品牌，不只技術解決方案，我也串連在地品牌與設計師，執行「圈層式行銷」策略。透過品牌影像重塑與精準的內容策略，讓品牌在 YouTube 獲得超過萬次曝光，成功吸引都市工作者下鄉入住。'
+      },
+      {
+        type: 'video',
+        src: '/images/project/project 3/project3-mkt.mp4',
+        alt: '品牌影片',
+        caption: '品牌影片'
+      },
+
+      {
         type: 'results',
-        title: '優化成果',
+        title: '數位轉型成果',
         metrics: [
-          { label: '轉換率提升', value: '300%' },
-          { label: '營收成長', value: '600%' },
-          { label: '購物車放棄率降低', value: '45%' }
+          { label: '網紅合作', value: '3+' },
+          { label: '管理效率提升', value: '80%' }
         ]
+      },
+      {
+        type: 'services',
+        title: '提供服務',
+        subtitle: 'NoCode 快速開發與品牌策略',
+        description: '專為中小企業量身打造的數位轉型解決方案，結合技術開發與行銷策略：',
+        services: [
+          { name: 'NoCode 系統開發' },
+          { name: 'Google Sheets 整合' },
+          { name: '品牌影像設計' },
+          { name: '圈層行銷策略' },
+          { name: '內容行銷規劃' },
+          { name: '社群媒體經營' }
+        ]
+      },
+      {
+        type: 'quote',
+        content: '真正的數位轉型不是導入最先進的技術，而是找到最適合企業現況的解決方案，讓科技真正為業務服務。',
+        author: 'Yuga'
       }
     ]
   }
@@ -272,4 +375,9 @@ export type ProjectBlock =
   | { type: 'hero'; title: string; subtitle: string; description: string }
   | { type: 'text'; title: string; content: string }
   | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'video'; src: string; alt: string; caption?: string }
+  | { type: 'link-preview'; url: string; title: string; description: string; domain: string }
   | { type: 'results'; title: string; metrics: readonly { label: string; value: string }[] }
+  | { type: 'services'; title: string; subtitle: string; description: string; services: readonly { name: string }[] }
+  | { type: 'gallery'; images: readonly { src: string; alt: string }[] }
+  | { type: 'quote'; content: string; author?: string }
