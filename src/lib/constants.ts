@@ -152,3 +152,124 @@ export const ANIMATIONS = {
     transition: { duration: 0.6 },
   },
 } as const
+
+// Works 專案資料結構 - 易於維護的內容管理系統
+export const PROJECTS = [
+  {
+    id: 'project-1',
+    title: '品牌重塑專案',
+    subtitle: '協助科技新創公司完整品牌形象重塑',
+    description: '協助科技新創公司完整品牌形象重塑，包含識別設計、網站建置與行銷策略規劃。',
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
+    tags: ['品牌設計', 'UI/UX', '行銷策略'],
+    duration: '3 個月',
+    role: '品牌設計師 / 策略顧問',
+    // 詳細內容區塊 - 支援多種內容類型
+    detailBlocks: [
+      {
+        type: 'hero',
+        title: '品牌重塑專案',
+        subtitle: '從零開始打造科技新創的品牌識別',
+        description: '為一家專注於AI解決方案的新創公司，重新定義品牌策略、視覺識別與數位體驗。'
+      },
+      {
+        type: 'text',
+        title: '專案背景',
+        content: '客戶是一家剛成立兩年的AI技術公司，擁有優秀的技術團隊，但缺乏清晰的品牌定位和專業的視覺形象。隨著公司業務快速發展，急需建立能夠傳達專業性和創新性的品牌形象。'
+      },
+      {
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&q=80',
+        alt: '品牌設計過程',
+        caption: '品牌識別設計發展過程'
+      },
+      {
+        type: 'text',
+        title: '解決方案',
+        content: '我們從品牌策略開始，深入了解目標客群與市場定位，然後設計了完整的視覺識別系統，包含Logo、色彩、字體、應用規範等。最後建置了響應式網站，完整呈現品牌價值。'
+      },
+      {
+        type: 'results',
+        title: '專案成果',
+        metrics: [
+          { label: '品牌知名度提升', value: '300%' },
+          { label: '網站轉換率', value: '4.2%' },
+          { label: '客戶詢問增加', value: '250%' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'project-2',
+    title: 'AI 驅動產品開發',
+    subtitle: '2週內完成 MVP 開發功能產品',
+    description: '運用AI 技術，2週內完成 MVP 開發功能產品。',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
+    tags: ['產品開發', 'AI整合', 'No-Code'],
+    duration: '2 週',
+    role: '產品經理 / 技術顧問',
+    detailBlocks: [
+      {
+        type: 'hero',
+        title: 'AI 驅動產品開發',
+        subtitle: '快速原型到產品上線的完整流程',
+        description: '運用最新的AI工具與No-Code平台，在短時間內將想法轉化為可運行的產品。'
+      },
+      {
+        type: 'text',
+        title: '挑戰與目標',
+        content: '客戶需要在極短時間內驗證商業想法，傳統開發週期太長且成本過高。我們運用AI輔助開發和No-Code工具，大幅縮短開發時程。'
+      },
+      {
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+        alt: 'AI開發流程',
+        caption: 'AI輔助開發的完整工作流程'
+      },
+      {
+        type: 'text',
+        title: '技術實現',
+        content: '結合OpenAI API、Bubble平台、Figma設計，建立了一套完整的快速開發流程。從需求分析到產品上線，全程運用AI工具提升效率。'
+      }
+    ]
+  },
+  {
+    id: 'project-3',
+    title: '電商平台優化',
+    subtitle: '透過數據驅動提升用戶體驗',
+    description: '透過使用者體驗優化與數據分析，將轉換率提升300%，營收成長6倍。',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    tags: ['電商優化', '數據分析', 'UX設計'],
+    duration: '4 個月',
+    role: 'UX顧問 / 數據分析師',
+    detailBlocks: [
+      {
+        type: 'hero',
+        title: '電商平台優化',
+        subtitle: '數據驅動的用戶體驗改善',
+        description: '透過深度數據分析與用戶研究，重新設計購物流程，大幅提升轉換率與營收。'
+      },
+      {
+        type: 'text',
+        title: '現況分析',
+        content: '原有電商平台雖然流量不錯，但轉換率僅有1.2%，購物車放棄率高達78%。透過用戶行為分析發現了關鍵問題點。'
+      },
+      {
+        type: 'results',
+        title: '優化成果',
+        metrics: [
+          { label: '轉換率提升', value: '300%' },
+          { label: '營收成長', value: '600%' },
+          { label: '購物車放棄率降低', value: '45%' }
+        ]
+      }
+    ]
+  }
+] as const
+
+// 專案內容區塊的類型定義
+export type ProjectBlock = 
+  | { type: 'hero'; title: string; subtitle: string; description: string }
+  | { type: 'text'; title: string; content: string }
+  | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'results'; title: string; metrics: readonly { label: string; value: string }[] }

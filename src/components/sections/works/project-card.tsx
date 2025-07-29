@@ -6,25 +6,30 @@ interface ProjectCardProps {
   project: {
     id: string
     title: string
+    subtitle: string
     description: string
     image: string
     tags: readonly string[]
-    link?: string
+    duration: string
+    role: string
+    detailBlocks: readonly any[]
   }
   index: number
+  onClick: () => void
 }
 
 /**
  * 專案卡片組件
  */
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   return (
     <div 
-      className="group cursor-pointer"
+      className="group cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
       style={{ 
         animationDelay: `${index * 0.2}s`,
         animation: 'fadeInUp 0.6s ease-out forwards'
       }}
+      onClick={onClick}
     >
       {/* 專案圖片 */}
       <div className="relative overflow-hidden mb-6 aspect-[4/3]">

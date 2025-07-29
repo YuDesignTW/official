@@ -34,10 +34,10 @@ export function ServiceItem({ service, index }: ServiceItemProps) {
           </span>
           
           {/* 標題翻轉容器 */}
-          <div className="relative overflow-hidden h-20 md:h-24 lg:h-28 flex-1">
+          <div className="relative overflow-hidden h-24 md:h-24 lg:h-28 flex-1">
             {/* 原始標題 - 左對齊 */}
             <h3 
-              className={`absolute inset-0 flex items-center justify-start text-2xl md:text-6xl lg:text-7xl font-black text-black font-display tracking-tight leading-tight transition-all duration-500 ease-in-out ${
+              className={`absolute inset-0 flex items-center justify-start text-4xl md:text-6xl lg:text-7xl font-black text-black font-display tracking-tight leading-tight transition-all duration-500 ease-in-out ${
                 isExpanded 
                   ? 'transform -translate-y-full opacity-0' 
                   : 'transform translate-y-0 opacity-100'
