@@ -24,9 +24,9 @@ export default function HomePage() {
         <About />
         <Services />
         <WhyUs />
-        <Process />
         <Works />
         <Impacts />
+        <Process />
       </main>
       <Footer />
       <BackToTop />
