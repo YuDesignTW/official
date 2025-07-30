@@ -22,8 +22,8 @@ export default function HomePage() {
       <main>
         <Hero />
         <About />
-        <WhyUs />
         <Services />
+        <WhyUs />
         <Process />
         <Works />
         <Impacts />

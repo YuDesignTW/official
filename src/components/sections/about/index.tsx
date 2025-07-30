@@ -89,11 +89,8 @@ export function About() {
         <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
           
           {/* 第二個 Section - 打字機效果的角色與需求 - 固定高度 */}
-          <motion.section
+          <section
             id="about-typewriter"
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
             className="py-12 md:py-16 pb-36 md:pb-42"
           >
             <div className="text-left max-w-4xl h-48 md:h-56 lg:h-64 xl:h-72">
@@ -113,7 +110,7 @@ export function About() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </section>
 
           {/* 分隔線容器 */}
           <div className="py-[120px]">
