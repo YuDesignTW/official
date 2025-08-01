@@ -1,6 +1,6 @@
-// 獲取基礎路徑（用於 GitHub Pages 部署）
+// 獲取基礎路徑（用於自訂網域部署）
 export const getBasePath = () => {
-  return process.env.NODE_ENV === 'production' ? '/official' : ''
+  return '' // 使用自訂網域時不需要子路徑
 }
 
 // 獲取完整的資源路徑
