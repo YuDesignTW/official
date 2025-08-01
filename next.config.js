@@ -10,9 +10,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
-  // GitHub Pages 部署設定
-  basePath: process.env.NODE_ENV === 'production' ? '/official' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/official/' : '',
+  // 自訂網域部署設定 - 不需要 basePath 和 assetPrefix
 }
 
 module.exports = nextConfig
