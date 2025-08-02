@@ -1,81 +1,17 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
-// 角色與需求對應資料
-const CLIENT_DATA = [
-  {
-    role: "初創團隊創業者",
-    need: "思考如何達成商品化的第一哩路"
-  },
-  {
-    role: "有經驗的企業頭家", 
-    need: "尋找下一個數位成長突破口"
-  },
-  {
-    role: "深耕地方的團隊",
-    need: "尋求一個把理念轉成爆款產品的方法"
-  },
-  {
-    role: "高超技術的發明家",
-    need: "找一個能幫你打造設計、打進市場的夥伴"
-  }
-]
-
 /**
- * 重新設計的 About Section - 品牌故事
+ * About Section - 專屬你的商業製作人
+ * 移除打字機動畫，專注於品牌故事
  */
 export function About() {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
   })
-
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [displayedRole, setDisplayedRole] = useState('')
-  const [displayedNeed, setDisplayedNeed] = useState('')
-  const [isTypingRole, setIsTypingRole] = useState(true)
-
-  // 打字機效果
-  useEffect(() => {
-    if (!inView) return
-
-    const currentData = CLIENT_DATA[currentIndex]
-    let timeoutId: NodeJS.Timeout
-
-    if (isTypingRole) {
-      // 打字顯示角色
-      if (displayedRole.length < currentData.role.length) {
-        timeoutId = setTimeout(() => {
-          setDisplayedRole(currentData.role.slice(0, displayedRole.length + 1))
-        }, 100)
-      } else {
-        // 角色打完，開始打需求
-        timeoutId = setTimeout(() => {
-          setIsTypingRole(false)
-        }, 500)
-      }
-    } else {
-      // 打字顯示需求
-      if (displayedNeed.length < currentData.need.length) {
-        timeoutId = setTimeout(() => {
-          setDisplayedNeed(currentData.need.slice(0, displayedNeed.length + 1))
-        }, 50)
-      } else {
-        // 需求打完，等待後切換到下一組
-        timeoutId = setTimeout(() => {
-          setCurrentIndex((prev) => (prev + 1) % CLIENT_DATA.length)
-          setDisplayedRole('')
-          setDisplayedNeed('')
-          setIsTypingRole(true)
-        }, 2000)
-      }
-    }
-
-    return () => clearTimeout(timeoutId)
-  }, [displayedRole, displayedNeed, isTypingRole, currentIndex, inView])
 
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden" style={{
@@ -87,37 +23,13 @@ export function About() {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
-          
-          {/* 第二個 Section - 打字機效果的角色與需求 - 固定高度 */}
-          <section
-            id="about-typewriter"
-            className="py-12 md:py-16 pb-36 md:pb-42"
-          >
-            <div className="text-left max-w-4xl h-48 md:h-56 lg:h-64 xl:h-72">
-              <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white leading-tight">
-                <p>Hey! 你是</p>
-                <div className="font-bold text-primary mt-2 md:mt-4 h-16 md:h-20 lg:h-24 xl:h-28">
-                  {displayedRole}
-                  {isTypingRole && <span className="animate-pulse">|</span>}
-                </div>
-              </div>
-              
-              <div className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white/70 leading-relaxed mt-4 md:mt-6">
-                <p>你正在</p>
-                <div className="font-medium text-white mt-2 md:mt-4 h-16 md:h-20 lg:h-24 xl:h-28">
-                  {displayedNeed}
-                  {!isTypingRole && <span className="animate-pulse">|</span>}
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* 分隔線容器 */}
-          <div className="py-[120px]">
+          <div className="py-[60px]">
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
               animate={inView ? { scaleX: 1, opacity: 1 } : {}}
-              transition={{ duration: 1.0, delay: 0.8 }}
+              transition={{ duration: 1.0, delay: 0.3 }}
               className="w-32 h-[2px] bg-primary/50 mx-auto"
               style={{ transformOrigin: 'center' }}
             />

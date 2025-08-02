@@ -2,7 +2,7 @@
 
 import { useInView } from 'react-intersection-observer'
 import { ProjectCard } from './project-card'
-import { PROJECTS } from '@/lib/constants'
+import { getPublishedProjects } from '@/lib/works'
 
 /**
  * Works Section - 作品集展示
@@ -12,6 +12,9 @@ export function Works() {
     threshold: 0.1,
     triggerOnce: true,
   })
+
+  // 使用新的內容管理系統獲取項目
+  const projects = getPublishedProjects()
 
   return (
     <section id="works" className="py-32 bg-gray-50">
@@ -36,7 +39,7 @@ export function Works() {
           ref={ref}
           className="grid md:grid-cols-2 gap-12 lg:gap-16"
         >
-          {inView && PROJECTS.map((project, index) => (
+          {inView && projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}

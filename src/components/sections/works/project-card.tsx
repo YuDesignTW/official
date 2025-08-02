@@ -2,19 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { getAssetPath } from '@/lib/config'
+import type { ProjectMetadata } from '@/lib/works'
 
 interface ProjectCardProps {
-  project: {
-    id: string
-    title: string
-    subtitle: string
-    description: string
-    image: string
-    tags: readonly string[]
-    duration: string
-    role: string
-    detailBlocks: readonly any[]
-  }
+  project: ProjectMetadata
   index: number
 }
 
@@ -34,7 +26,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       {/* 專案圖片 */}
       <div className="relative overflow-hidden mb-6 aspect-[4/3]">
         <Image
-          src={project.image}
+          src={getAssetPath(project.image)}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"

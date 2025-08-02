@@ -26,27 +26,9 @@ export interface Result {
   description: string
 }
 
-export interface Testimonial {
-  id: number
-  content: string
-  author: {
-    name: string
-    title: string
-    avatar: string
-  }
-}
-
 export interface Skill {
   name: string
   level: number
-}
-
-export interface ContactForm {
-  name: string
-  email: string
-  phone?: string
-  service: string
-  message: string
 }
 
 export interface Project {
@@ -57,17 +39,4 @@ export interface Project {
   image: string
   tags: string[]
   link?: string
-}
-
-export interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  content: string
-  date: string
-  author: string
-  category: string
-  tags: string[]
-  image: string
-  readTime: number
 }

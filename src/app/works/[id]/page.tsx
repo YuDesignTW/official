@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
-import { PROJECTS } from '@/lib/constants'
+import { Metadata } from 'next'
+import { getProjectById, getAllProjectIds, getProjectWithContent } from '@/lib/works'
 import { ProjectDetailPage } from '@/components/sections/works/project-detail-page'
 
 interface ProjectPageProps {
@@ -9,35 +10,69 @@ interface ProjectPageProps {
 }
 
 export async function generateStaticParams() {
-  return PROJECTS.map((project) => ({
-    id: project.id,
+  // 使用新的 works 系統生成靜態參數
+  const projectIds = getAllProjectIds()
+  return projectIds.map((id) => ({
+    id: id,
   }))
 }
 
-export async function generateMetadata({ params }: ProjectPageProps) {
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { id } = await params
-  const project = PROJECTS.find((p) => p.id === id)
+  const projectMeta = getProjectById(id)
   
-  if (!project) {
+  if (!projectMeta) {
     return {
-      title: '專案未找到',
+      title: '專案未找到 - Yu Design',
+      description: '您尋找的專案不存在或已被移除。',
     }
   }
 
   return {
-    title: `${project.title} | YuDesign`,
-    description: project.description,
+    title: projectMeta.title,
+    description: projectMeta.description,
+    keywords: [...projectMeta.keywords, 'Yu Design', '設計案例', '作品集', 'UI/UX'],
+    authors: [{ name: 'Yuga', url: 'https://yu-design.tw' }],
+    creator: 'Yuga',
+    publisher: 'Yu Design',
     openGraph: {
-      title: project.title,
-      description: project.description,
-      images: [project.image],
+      title: `${projectMeta.title} | Yu Design`,
+      description: projectMeta.description,
+      type: 'article',
+      publishedTime: projectMeta.publishDate,
+      authors: ['Yuga'],
+      tags: projectMeta.tags,
+      images: [{
+        url: projectMeta.ogImage || projectMeta.image,
+        width: 1200,
+        height: 630,
+        alt: projectMeta.title,
+      }],
+      siteName: 'Yu Design',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${projectMeta.title} | Yu Design`,
+      description: projectMeta.description,
+      images: [projectMeta.ogImage || projectMeta.image],
+      creator: '@yudesign',
+    },
+    alternates: {
+      canonical: `https://yu-design.tw/works/${id}`,
+    },
+    other: {
+      'article:author': 'Yuga',
+      'article:section': projectMeta.category,
+      'article:tag': projectMeta.tags.join(', '),
     },
   }
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params
-  const project = PROJECTS.find((p) => p.id === id)
+  
+  // 使用新的統一內容管理系統
+  const project = getProjectWithContent(id)
 
   if (!project) {
     notFound()

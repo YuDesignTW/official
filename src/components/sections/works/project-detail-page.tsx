@@ -5,6 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { ProjectBlock } from '@/lib/constants'
+import { getAssetPath } from '@/lib/config'
+import { Breadcrumb } from '@/components/seo/breadcrumb'
+import { getRelatedProjects } from '@/lib/works'
 
 interface ProjectDetailPageProps {
   project: {
@@ -26,6 +29,17 @@ interface ProjectDetailPageProps {
 export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   return (
     <main className="min-h-screen bg-white">
+      {/* 麵包屑導航 */}
+      <div className="container mx-auto px-8 md:px-16 lg:px-36 pt-8">
+        <Breadcrumb 
+          items={[
+            { label: '作品集', href: '/#works' },
+            { label: project.title }
+          ]}
+          className="mb-4"
+        />
+      </div>
+
       {/* 返回按鈕 - 固定在左上角 */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -57,11 +71,21 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
         ))}
 
 
-        {/* Let's Talk 聯絡區塊 */}
+        {/* 相關專案推薦 */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: project.detailBlocks.length * 0.15 }}
+          className="bg-white py-20"
+        >
+          <RelatedProjects currentProjectId={project.id} />
+        </motion.div>
+
+        {/* Let's Talk 聯絡區塊 */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: (project.detailBlocks.length + 1) * 0.15 }}
           className="bg-gray-50 py-32"
         >
           <div className="px-8 md:px-16 lg:px-36">
@@ -205,7 +229,7 @@ function ProjectBlock({
           <div className="max-w-7xl mx-auto">
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
               <Image
-                src={block.src}
+                src={getAssetPath(block.src)}
                 alt={block.alt}
                 fill
                 className="object-cover"
@@ -226,7 +250,7 @@ function ProjectBlock({
           <div className="max-w-7xl mx-auto">
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-black">
               <video
-                src={block.src}
+                src={getAssetPath(block.src)}
                 autoPlay
                 muted
                 loop
@@ -376,7 +400,7 @@ function ProjectBlock({
                     }`}
                   >
                     <Image
-                      src={image.src}
+                      src={getAssetPath(image.src)}
                       alt={image.alt}
                       fill
                       className="object-contain hover:scale-105 transition-transform duration-300"
@@ -406,7 +430,7 @@ function ProjectBlock({
                   >
                     {isMarketingGallery ? (
                       <Image
-                        src={image.src}
+                        src={getAssetPath(image.src)}
                         alt={image.alt}
                         width={800}
                         height={0}
@@ -415,7 +439,7 @@ function ProjectBlock({
                       />
                     ) : (
                       <Image
-                        src={image.src}
+                        src={getAssetPath(image.src)}
                         alt={image.alt}
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-300"
@@ -450,4 +474,71 @@ function ProjectBlock({
     default:
       return null
   }
+}
+
+/**
+ * 相關專案推薦組件
+ */
+function RelatedProjects({ currentProjectId }: { currentProjectId: string }) {
+  const relatedProjects = getRelatedProjects(currentProjectId, 2)
+
+  if (relatedProjects.length === 0) {
+    return null
+  }
+
+  return (
+    <div className="px-8 md:px-16 lg:px-36">
+      <div className="max-w-7xl mx-auto">
+        <h3 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
+          相關專案
+        </h3>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          {relatedProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Link 
+                href={`/works/${project.id}`}
+                className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={getAssetPath(project.image)}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                
+                <div className="p-6">
+                  <h4 className="text-xl font-bold text-black mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm line-clamp-3">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span 
+                        key={tag}
+                        className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
 }

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { Plus, Eye, Edit2, Download, Save, RotateCcw } from 'lucide-react'
-import { PROJECTS as ORIGINAL_PROJECTS, ProjectBlock } from '@/lib/constants'
+import { ProjectBlock } from '@/lib/constants'
+import { getPublishedProjects, getProjectWithContent } from '@/lib/works'
 import { ProjectEditor } from './project-editor'
 import { ProjectPreview } from './project-preview'
 
@@ -19,17 +20,27 @@ type Project = {
   detailBlocks: ProjectBlock[]
 }
 
-// 將 readonly 轉換為可變版本的輔助函數
-const convertToMutable = (readonlyProjects: typeof ORIGINAL_PROJECTS): Project[] => {
-  return readonlyProjects.map(project => ({
-    ...project,
-    tags: [...project.tags],
-    detailBlocks: [...project.detailBlocks]
-  }))
+// 將新的 metadata 轉換為 admin 可用的格式
+const convertToAdminFormat = (): Project[] => {
+  const publishedProjects = getPublishedProjects()
+  return publishedProjects.map(metadata => {
+    const fullProject = getProjectWithContent(metadata.id)
+    return {
+      id: metadata.id,
+      title: metadata.title,
+      subtitle: metadata.subtitle,
+      description: metadata.description,
+      image: metadata.image,
+      tags: [...metadata.tags],
+      duration: metadata.duration,
+      role: metadata.role,
+      detailBlocks: fullProject ? [...fullProject.detailBlocks] : []
+    }
+  })
 }
 
 export function AdminDashboard() {
-  const [projects, setProjects] = useState<Project[]>(() => convertToMutable(ORIGINAL_PROJECTS))
+  const [projects, setProjects] = useState<Project[]>(() => convertToAdminFormat())
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isEditing, setIsEditing] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
@@ -57,7 +68,7 @@ export function AdminDashboard() {
   const resetToOriginal = () => {
     if (confirm('確定要重置為原始資料嗎？這將會清除所有編輯內容。')) {
       localStorage.removeItem('cms-projects')
-      setProjects(convertToMutable(ORIGINAL_PROJECTS))
+      setProjects(convertToAdminFormat())
     }
   }
 
