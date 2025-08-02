@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 // 打字機內容資料
@@ -40,14 +40,14 @@ export function Typewriter() {
   const [showCursor, setShowCursor] = useState(true)
 
   // 重置到下一組數據
-  const moveToNext = () => {
+  const moveToNext = useCallback(() => {
     const nextIndex = (currentIndex + 1) % TYPEWRITER_DATA.length
     setCurrentIndex(nextIndex)
     setRoleText('')
     setNeedText('')
     setIsTypingRole(true)
     setShowCursor(true)
-  }
+  }, [currentIndex])
 
   // 主要打字機邏輯
   useEffect(() => {
@@ -84,7 +84,7 @@ export function Typewriter() {
     }
 
     return () => clearTimeout(timeout)
-  }, [inView, currentIndex, roleText, needText, isTypingRole])
+  }, [inView, currentIndex, roleText, needText, isTypingRole, moveToNext])
 
   return (
     <section 

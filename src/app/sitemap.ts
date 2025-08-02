@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { getPublishedProjects } from '@/lib/works'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yu-design.tw'
   
