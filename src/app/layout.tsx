@@ -12,6 +12,9 @@ const notoSansTC = Noto_Sans_TC({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yu-design.tw'),
+  alternates: {
+    canonical: 'https://yu-design.tw',
+  },
   title: {
     default: 'Yu Design - UI/UX 設計顧問 | AI 產品開發 | 行銷策略規劃',
     template: '%s | Yu Design'
