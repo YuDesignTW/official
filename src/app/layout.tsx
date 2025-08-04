@@ -88,7 +88,7 @@ export default function RootLayout({
       </head>
       <body className={`${notoSansTC.variable} font-sans antialiased`}>
         {process.env.NODE_ENV === 'production' && (
-          <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+          <GoogleAnalytics gaId="G-MDT22GMJ1F" />
         )}
         {children}
       </body>
