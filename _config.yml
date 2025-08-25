@@ -1,0 +1,5 @@
+plugins:
+  - jekyll-sitemap
+
+url: "https://yu-design.tw"
+baseurl: ""
