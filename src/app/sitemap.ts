@@ -14,12 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 1,
     },
-    {
-      url: `${baseUrl}/admin`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
+   // {
+    //  url: `${baseUrl}/admin`,
+      //lastModified: new Date(),
+      //changeFrequency: 'yearly' as const,
+      //priority: 0.3,
+    //},
   ]
   
   // 作品頁面 - 使用新的 works 系統
