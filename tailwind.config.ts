@@ -15,7 +15,7 @@ const config: Config = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: '#FF4500',
           foreground: 'hsl(var(--primary-foreground))',
           50: '#FFF5F0',
           100: '#FFE8D6',
@@ -76,6 +76,7 @@ const config: Config = {
           light: '#666666',
           dark: '#333333',
         },
+        'brand-orange': '#FF4500',
       },
       borderRadius: {
         lg: 'var(--radius)',

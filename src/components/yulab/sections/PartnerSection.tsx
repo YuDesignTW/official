@@ -28,7 +28,12 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
       {/* 卡片區域 */}
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-6 lg:gap-8">
         {/* For BRANDS 卡片 */}
-        <div className={`group bg-white text-black aspect-[300/400] relative flex flex-col items-start p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${isPartnerSectionVisible ? 'animate-partner-card-1' : 'opacity-0'}`}>
+        <Link
+          href="https://calendar.app.google/JjkxXsrjHzUuBCPx5"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`group bg-white text-black aspect-[300/400] relative flex flex-col items-start p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${isPartnerSectionVisible ? 'animate-partner-card-1' : 'opacity-0'}`}
+        >
           <h3
             className="text-3xl lg:text-4xl uppercase mb-3"
             style={{
@@ -58,22 +63,24 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
             有好產品，卻不知道怎麼說服世界<br />
             我們讓你的故事被看見
           </p>
-          <Link
-            href="https://calendar.app.google/JjkxXsrjHzUuBCPx5"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group/link flex items-center gap-2 text-sm uppercase mt-8 hover:gap-4 transition-all duration-300"
+          <div
+            className="flex items-center gap-2 text-lg lg:text-xl uppercase mt-8 transition-all duration-300 group-hover:gap-4"
             style={{
               fontFamily: "'HanWangMingHeavy', serif"
             }}
           >
-            <span className="h-2 w-3 bg-current transition-all duration-200 group-hover/link:w-7"></span>
+            <span className="h-2 w-3 bg-current transition-all duration-200 group-hover:w-7"></span>
             <span>立即預約</span>
-          </Link>
-        </div>
+          </div>
+        </Link>
 
         {/* For Talent 卡片 */}
-        <div className={`group bg-black text-white aspect-[300/400] relative flex flex-col items-start p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${isPartnerSectionVisible ? 'animate-partner-card-2' : 'opacity-0'}`}>
+        <Link
+          href="https://calendar.app.google/JjkxXsrjHzUuBCPx5"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`group bg-black text-white aspect-[300/400] relative flex flex-col items-start p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${isPartnerSectionVisible ? 'animate-partner-card-2' : 'opacity-0'}`}
+        >
           <h3
             className="text-3xl lg:text-4xl uppercase mb-3"
             style={{
@@ -91,7 +98,7 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
               fontWeight: 700
             }}
           >
-            專家好
+            行銷大神好
           </p>
           <p
             className="text-base lg:text-lg leading-relaxed mb-auto"
@@ -104,19 +111,16 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
             我們幫你打造屬於你的行銷武器<br />
             一起合作，一起進化
           </p>
-          <Link
-            href="https://calendar.app.google/JjkxXsrjHzUuBCPx5"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group/link flex items-center gap-2 text-sm uppercase mt-8 hover:gap-4 transition-all duration-300"
+          <div
+            className="flex items-center gap-2 text-lg lg:text-xl uppercase mt-8 transition-all duration-300 group-hover:gap-4"
             style={{
               fontFamily: "'HanWangMingHeavy', serif"
             }}
           >
-            <span className="h-2 w-3 bg-current transition-all duration-200 group-hover/link:w-7"></span>
+            <span className="h-2 w-3 bg-current transition-all duration-200 group-hover:w-7"></span>
             <span>加入我們</span>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
 
       {/* 動畫樣式 */}
