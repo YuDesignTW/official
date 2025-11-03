@@ -168,3 +168,9 @@ $RECYCLE.BIN/
 
 # Generated files
 /docs/api/
+
+# Large media files (use CDN or Git LFS instead)
+*.mov
+*.mp4
+*.avi
+*.mkv

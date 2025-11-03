@@ -21,7 +21,7 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
             letterSpacing: '0.05em'
           }}
         >
-          Let's grow business together
+          Let&apos;s grow business together
         </h2>
       </div>
 

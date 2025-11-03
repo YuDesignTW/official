@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { SectionName } from '../../hooks/useActiveSection'
+import { SectionName } from '../../../hooks/yulab/useActiveSection'
 
 interface NavigationProps {
   activeSection?: SectionName
