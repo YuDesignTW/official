@@ -76,7 +76,7 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
 
         {/* For Talent 卡片 */}
         <Link
-          href="https://calendar.app.google/JjkxXsrjHzUuBCPx5"
+          href="https://forms.gle/WnAmiYJ7kLT6AzDx6"
           target="_blank"
           rel="noopener noreferrer"
           className={`group bg-black text-white aspect-[300/400] relative flex flex-col items-start p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${isPartnerSectionVisible ? 'animate-partner-card-2' : 'opacity-0'}`}
@@ -118,7 +118,7 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
             }}
           >
             <span className="h-2 w-3 bg-current transition-all duration-200 group-hover:w-7"></span>
-            <span>加入我們</span>
+            <span>約咖啡聊聊</span>
           </div>
         </Link>
       </div>
