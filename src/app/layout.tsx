@@ -86,7 +86,10 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body className={`${notoSansTC.variable} font-sans antialiased`}>
+      <body
+        className={`${notoSansTC.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         {process.env.NODE_ENV === 'production' && (
           <GoogleAnalytics gaId="G-MDT22GMJ1F" />
         )}

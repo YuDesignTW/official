@@ -63,7 +63,7 @@ export function HeroContent() {
         >
           <p className="text-lg md:text-xl lg:text-2xl text-white font-light leading-relaxed max-w-5xl mx-auto">
             結合設計思維、AI/No‑Code 產品開發與行銷策略，<br className="hidden md:block" />
-            幫助你的品牌從 0 到 1 創造獨一無二的產品服務
+            幫助你的品牌從 <span className="text-brand-orange font-bold">0</span> 到 <span className="text-brand-orange font-bold">1</span> 創造獨一無二的產品服務
           </p>
         </div>
 

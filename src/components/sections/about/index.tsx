@@ -50,9 +50,9 @@ export function About() {
               transition={{ duration: 0.6, delay: 1.2 }}
               className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white font-display leading-tight"
             >
-              <span className="inline-block mr-3">專屬你的</span><span className="font-black">商業製作人</span>
+              <span className="inline-block mr-3 text-primary">專屬你的</span><span className="font-black text-primary">商業製作人</span>
               <br />
-              <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light mt-4 block">
+              <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light mt-4 block text-primary">
                 為你的品牌打造不可取代的價值
               </span>
             </motion.h2>
@@ -67,7 +67,7 @@ export function About() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.6, delay: 1.3 }}
-                      className="text-sm md:text-base text-white/50 font-light"
+                      className="text-sm md:text-base text-primary font-light"
                     >
                       from
                     </motion.span>
@@ -93,7 +93,7 @@ export function About() {
                   transition={{ duration: 0.6, delay: 1.5 }}
                   className="pt-4 md:pt-6"
                 >
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white">設計思維</h3>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-primary">設計思維</h3>
                   <p className="text-base md:text-lg text-white/70 mt-2 leading-relaxed">
                     深入理解用戶需求，運用設計思考流程
                   </p>
@@ -108,7 +108,7 @@ export function About() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.6, delay: 1.7 }}
-                      className="text-sm md:text-base text-white/50 font-light"
+                      className="text-sm md:text-base text-primary font-light"
                     >
                       to
                     </motion.span>
@@ -149,7 +149,7 @@ export function About() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.6, delay: 2.1 }}
-                      className="text-sm md:text-base text-white/50 font-light"
+                      className="text-sm md:text-base text-primary font-light"
                     >
                       to
                     </motion.span>

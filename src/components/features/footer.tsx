@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Linkedin, Mail, Phone, MapPin } from 'lucide-react'
@@ -27,7 +28,12 @@ const socialIcons = {
 }
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  // 使用 useState + useEffect 避免 hydration mismatch
+  const [currentYear, setCurrentYear] = useState(2024)
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear())
+  }, [])
 
   return (
     <footer className="bg-black text-white">
