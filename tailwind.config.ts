@@ -9,10 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: '#FF4500', // 橘色主色
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
           50: '#FFF5F0',
-          100: '#FFE8D6', 
+          100: '#FFE8D6',
           200: '#FFD1AD',
           300: '#FFB585',
           400: '#FF8A42',
@@ -23,7 +29,8 @@ const config: Config = {
           900: '#85291E',
         },
         secondary: {
-          DEFAULT: '#000000', // 灰黑色
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
           50: '#F8F8F8',
           100: '#F0F0F0',
           200: '#E8E8E8',
@@ -35,11 +42,20 @@ const config: Config = {
           800: '#202020',
           900: '#1A1A1A',
         },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
         accent: {
-          DEFAULT: '#FFFFFF', // 純白色
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
           50: '#FFFFFF',
           100: '#FEFEFE',
-          200: '#FDFDFD', 
+          200: '#FDFDFD',
           300: '#FCFCFC',
           400: '#FAFAFA',
           500: '#F8F8F8',
@@ -48,10 +64,23 @@ const config: Config = {
           800: '#E0E0E0',
           900: '#D8D8D8',
         },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
         gray: {
           light: '#666666',
           dark: '#333333',
         },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
