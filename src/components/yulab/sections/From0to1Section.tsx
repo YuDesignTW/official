@@ -80,8 +80,8 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
           style={{
             left: windowSize.width < 768 ? '20%' : 'auto',
             right: windowSize.width < 768 ? 'auto' : '15%',
-            bottom: windowSize.width < 768 ? '0%' : 'auto',
-            top: windowSize.width < 768 ? 'auto' : 'calc(50%)',
+            bottom: windowSize.width < 768 ? '10%' : 'auto',  // 手機版：從底部往上 10%
+            top: windowSize.width < 768 ? 'auto' : 'calc(50% - 80px)',  // 桌面版：往上移 80px
             transform: windowSize.width < 768 ? 'none' : 'translateY(-50%)',
             zIndex: windowSize.width < 768 ? 10 : 2
           }}
