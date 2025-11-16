@@ -19,8 +19,10 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
           alt="Background"
           width={1920}
           height={800}
+          sizes="100vw"
           className="w-full h-auto object-contain"
-          priority
+          loading="lazy"
+          quality={85}
         />
       </div>
 
@@ -41,7 +43,11 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
             alt="Ideation"
             width={300}
             height={200}
-            className="object-contain w-56 sm:w-48 md:w-60 lg:w-64 xl:w-72 h-auto"
+            sizes="(max-width: 640px) 224px, (max-width: 768px) 192px, (max-width: 1024px) 240px, 288px"
+            className="object-contain w-56 sm:w-48 md:w-60 lg:w-64 xl:w-72"
+            style={{ height: 'auto' }}
+            loading="lazy"
+            quality={85}
           />
         </div>
 
@@ -61,7 +67,10 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
             alt="Group 4"
             width={1200}
             height={400}
+            sizes="(max-width: 640px) 200vw, (max-width: 768px) 80vw, 70vw"
             className="object-contain h-auto w-[200vw] sm:w-[80vw] md:w-[70vw] lg:w-auto max-w-full"
+            loading="lazy"
+            quality={85}
           />
         </div>
 
@@ -82,7 +91,11 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
             alt="Group 1"
             width={300}
             height={200}
-            className="object-contain w-56 sm:w-48 md:w-60 lg:w-64 xl:w-72 h-auto"
+            sizes="(max-width: 640px) 224px, (max-width: 768px) 192px, (max-width: 1024px) 240px, 288px"
+            className="object-contain w-56 sm:w-48 md:w-60 lg:w-64 xl:w-72"
+            style={{ height: 'auto' }}
+            loading="lazy"
+            quality={85}
           />
         </div>
 
@@ -100,7 +113,11 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
             alt="Traffic Influence"
             width={250}
             height={180}
-            className="object-contain w-28 sm:w-40 md:w-48 lg:w-48 xl:w-56 h-auto"
+            sizes="(max-width: 640px) 112px, (max-width: 768px) 160px, (max-width: 1024px) 192px, 224px"
+            className="object-contain w-28 sm:w-40 md:w-48 lg:w-48 xl:w-56"
+            style={{ height: 'auto' }}
+            loading="lazy"
+            quality={85}
           />
         </div>
       </div>
@@ -110,7 +127,7 @@ export function From0to1Section({ fromSectionRef, isFromSectionVisible, windowSi
         <h1
           className={`font-black text-black ${isFromSectionVisible ? 'animate-fadeInUp' : ''}`}
           style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: "'HanWangMingHeavy', serif",
             fontWeight: 900,
             fontSize: windowSize.width < 640 ? '36px' : windowSize.width < 1024 ? '48px' : '72px',
             animationDelay: '0.5s'

@@ -397,13 +397,14 @@ export function ServiceSection({ serviceSectionRef }: ServiceSectionProps) {
 
         {/* 右側：背景影片 + 功能影片浮層 */}
         <div className="relative h-[60vh] sm:h-[70vh] lg:h-full flex items-center justify-center bg-black z-20">
-          {/* 背景預設影片 */}
+          {/* 背景預設影片 - 優化載入策略 */}
           <video
             className="w-full h-full object-cover"
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
           >
             <source src="/images/yulab/loginvideo.mp4" type="video/mp4" />
             您的瀏覽器不支援影片播放。
@@ -430,8 +431,15 @@ export function ServiceSection({ serviceSectionRef }: ServiceSectionProps) {
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 ref={(el) => {
-                  if (el) el.playbackRate = 0.8
+                  if (el) {
+                    el.playbackRate = 0.8
+                    // 確保影片載入後自動播放
+                    el.play().catch(() => {
+                      // 忽略自動播放失敗（某些瀏覽器政策）
+                    })
+                  }
                 }}
               >
                 <source src={activeServiceVideo} type="video/mp4" />

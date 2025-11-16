@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { RefObject } from 'react'
+import { RefObject, useState, useEffect } from 'react'
 
 interface HeroSectionProps {
   scrollY: number
@@ -10,6 +10,24 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
+  const [isAnimationReady, setIsAnimationReady] = useState(false)
+
+  useEffect(() => {
+    // 監聽資源載入完成事件
+    const handleResourcesLoaded = () => {
+      // 等待圓形擴散動畫結束（1.6s）後才開始 Hero 動畫
+      setTimeout(() => {
+        setIsAnimationReady(true)
+      }, 1600)
+    }
+
+    window.addEventListener('resourcesLoaded', handleResourcesLoaded)
+
+    return () => {
+      window.removeEventListener('resourcesLoaded', handleResourcesLoaded)
+    }
+  }, [])
+
   return (
     <section
       ref={heroSectionRef}
@@ -27,8 +45,10 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
             src="/images/yulab/hero_left.png"
             alt="Hero Background Left"
             fill
+            sizes="50vw"
             className="object-cover"
             priority
+            quality={90}
           />
         </div>
 
@@ -38,8 +58,10 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
             src="/images/yulab/hero_right.png"
             alt="Hero Background Right"
             fill
+            sizes="50vw"
             className="object-cover"
             priority
+            quality={90}
           />
         </div>
       </div>
@@ -59,8 +81,10 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
             alt="Logo Left"
             width={400}
             height={400}
+            sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
             className="object-contain w-48 sm:w-64 md:w-80 lg:w-96 h-auto"
             priority
+            quality={90}
           />
         </div>
 
@@ -77,8 +101,10 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
             alt="Logo Right"
             width={400}
             height={400}
+            sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
             className="object-contain w-48 sm:w-64 md:w-80 lg:w-96 h-auto"
             priority
+            quality={90}
           />
         </div>
       </div>
@@ -86,20 +112,25 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
       {/* 3. 最上層：中央內容區域 */}
       <div className="relative z-10 w-full h-full flex flex-col justify-center items-center px-4 sm:px-6" style={{marginTop: '40px'}}>
         {/* Logo CN - 中央 */}
-        <div className="mb-4 sm:mb-12 animate-fadeIn">
+        <div className={`mb-4 sm:mb-12 ${isAnimationReady ? 'animate-fadeIn' : 'opacity-0'}`}>
           <Image
             src="/images/yulab/logo_cn.png"
             alt="YU Market Logo"
             width={400}
             height={150}
-            className="object-contain w-64 sm:w-80 md:w-96 lg:w-[400px] h-auto"
+            sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 400px"
+            className="object-contain w-64 sm:w-80 md:w-96 lg:w-[400px]"
+            style={{ height: 'auto' }}
             priority
+            quality={90}
           />
         </div>
 
         {/* 副標題 - 中文 */}
         <h2
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-0 sm:mb-4 animate-fadeInUp text-center px-4"
+          className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-0 sm:mb-4 text-center px-4 ${
+            isAnimationReady ? 'animate-fadeInUp' : 'opacity-0'
+          }`}
           style={{
             fontFamily: "'Noto Sans TC', sans-serif",
             fontWeight: 700,
@@ -112,7 +143,9 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
 
         {/* 副標題 - 英文 */}
         <p
-          className="text-sm sm:text-base md:text-lg lg:text-xl text-white text-center px-4 animate-fadeInUp"
+          className={`text-sm sm:text-base md:text-lg lg:text-xl text-white text-center px-4 ${
+            isAnimationReady ? 'animate-fadeInUp' : 'opacity-0'
+          }`}
           style={{
             fontFamily: "'HanWangMingHeavy', serif",
             letterSpacing: '0.1em',
@@ -124,7 +157,12 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
       </div>
 
       {/* CTA 按鈕 - 僅手機版顯示，固定在底部 */}
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center sm:hidden animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
+      <div
+        className={`absolute bottom-8 left-0 right-0 z-20 flex justify-center sm:hidden ${
+          isAnimationReady ? 'animate-fadeInUp' : 'opacity-0'
+        }`}
+        style={{ animationDelay: '0.3s' }}
+      >
         <Link href="https://calendar.app.google/JjkxXsrjHzUuBCPx5" target="_blank" rel="noopener noreferrer">
           <div className="hero-cta-button group relative overflow-hidden px-8 py-4 transition-all duration-500 rounded-full">
             {/* 毛玻璃背景層 */}
@@ -171,13 +209,19 @@ export function HeroSection({ scrollY, heroSectionRef }: HeroSectionProps) {
         }
 
         .animate-fadeIn {
-          opacity: 0;
-          animation: fadeIn 0.6s ease-out forwards;
+          animation: fadeIn 0.8s ease-out forwards;
         }
 
         .animate-fadeInUp {
-          opacity: 0;
-          animation: fadeInUp 0.6s ease-out forwards;
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInUp:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+
+        .animate-fadeInUp:nth-child(3) {
+          animation-delay: 0.4s;
         }
 
         /* Hero CTA Button styles */

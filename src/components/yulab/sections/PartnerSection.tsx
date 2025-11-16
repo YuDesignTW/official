@@ -29,7 +29,7 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-6 lg:gap-8">
         {/* For BRANDS 卡片 */}
         <Link
-          href="https://calendar.app.google/JjkxXsrjHzUuBCPx5"
+          href="https://line.me/ti/p/Y3dE4kAuVi"
           target="_blank"
           rel="noopener noreferrer"
           className={`group bg-white text-black aspect-[300/400] relative flex flex-col items-start p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${isPartnerSectionVisible ? 'animate-partner-card-1' : 'opacity-0'}`}
@@ -60,8 +60,9 @@ export function PartnerSection({ partnerSectionRef, isPartnerSectionVisible }: P
               fontWeight: 400
             }}
           >
-            有好產品，卻不知道怎麼說服世界<br />
-            我們讓你的故事被看見
+            *** 前期體驗招募中 ***<br />
+            加Line一起聊聊<br />
+            在未來，我們讓你的故事被看見
           </p>
           <div
             className="flex items-center gap-2 text-lg lg:text-xl uppercase mt-8 transition-all duration-300 group-hover:gap-4"

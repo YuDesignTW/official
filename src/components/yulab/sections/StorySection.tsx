@@ -106,6 +106,7 @@ export function StorySection({ storySectionRef, storyProgress, windowSize }: Sto
               alt="Why Us"
               width={1920}
               height={1080}
+              sizes="100vw"
               className="object-contain sm:object-contain"
               style={{
                 // 手機版：直式夾槽型（9:16 比例），桌面版：橫式
@@ -128,7 +129,7 @@ export function StorySection({ storySectionRef, storyProgress, windowSize }: Sto
                   : (storyProgress > 0.7 ? 'cover' : 'contain'),
                 objectPosition: windowSize.width < 640 ? '60% center' : 'center'
               }}
-              quality={100}
+              quality={95}
               priority
             />
           </div>
