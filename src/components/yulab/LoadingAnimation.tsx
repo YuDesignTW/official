@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 /**
  * 關鍵資源列表 - 需要預載的圖片和影片
+ * 策略：只預載首屏必需的資源，其他資源延遲載入
  */
 const CRITICAL_RESOURCES = {
   images: [
@@ -15,79 +16,121 @@ const CRITICAL_RESOURCES = {
     '/images/yulab/whyus.png',
   ],
   videos: [
-    '/images/yulab/loginvideo.mp4',
-    '/video/01_project_management.mp4',
+    '/images/yulab/loginvideo.mp4',                      // 背景影片（必需）
+    '/images/yulab/video/01_project_management.mp4',     // 第一個功能影片（必需）
   ]
 }
 
 /**
- * 預載資源的 Hook
+ * 預載資源的 Hook - 簡化版本
  */
 function useResourcePreloader() {
-  const [progress, setProgress] = useState(0)
+  const [displayProgress, setDisplayProgress] = useState(0)
+  const [targetProgress, setTargetProgress] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
+  const targetProgressRef = useRef(0)  // ✅ 使用 ref 來追蹤最新的 targetProgress
 
+  // useEffect #1: 資源預載（只執行一次）
   useEffect(() => {
     const totalResources = CRITICAL_RESOURCES.images.length + CRITICAL_RESOURCES.videos.length
     let loadedCount = 0
 
     const updateProgress = () => {
       loadedCount++
-      const currentProgress = Math.floor((loadedCount / totalResources) * 100)
-      setProgress(currentProgress)
-
-      if (loadedCount === totalResources) {
-        // 所有資源載入完成後，再等待 800ms 讓動畫完整播放
-        setTimeout(() => {
-          setIsComplete(true)
-        }, 800)
-      }
+      const progress = Math.floor((loadedCount / totalResources) * 100)
+      targetProgressRef.current = progress
+      setTargetProgress(progress)
     }
 
     // 預載圖片
     const imagePromises = CRITICAL_RESOURCES.images.map((src) => {
       return new Promise<void>((resolve) => {
         const img = new Image()
+        let isResolved = false
+
+        const timeout = setTimeout(() => {
+          if (!isResolved) {
+            isResolved = true
+            updateProgress()
+            resolve()
+          }
+        }, 3000)
+
         img.onload = () => {
-          updateProgress()
-          resolve()
+          if (!isResolved) {
+            clearTimeout(timeout)
+            isResolved = true
+            updateProgress()
+            resolve()
+          }
         }
+
         img.onerror = () => {
-          // 即使載入失敗也要繼續
-          updateProgress()
-          resolve()
+          if (!isResolved) {
+            clearTimeout(timeout)
+            isResolved = true
+            updateProgress()
+            resolve()
+          }
         }
+
         img.src = src
       })
     })
 
-    // 預載影片（只載入 metadata）
+    // 預載影片
     const videoPromises = CRITICAL_RESOURCES.videos.map((src) => {
       return new Promise<void>((resolve) => {
         const video = document.createElement('video')
+        let isResolved = false
+
+        const timeout = setTimeout(() => {
+          if (!isResolved) {
+            isResolved = true
+            updateProgress()
+            resolve()
+          }
+        }, 4000)
+
         video.preload = 'metadata'
+
         video.onloadedmetadata = () => {
-          updateProgress()
-          resolve()
+          if (!isResolved) {
+            clearTimeout(timeout)
+            isResolved = true
+            updateProgress()
+            resolve()
+          }
         }
+
         video.onerror = () => {
-          // 即使載入失敗也要繼續
-          updateProgress()
-          resolve()
+          if (!isResolved) {
+            clearTimeout(timeout)
+            isResolved = true
+            updateProgress()
+            resolve()
+          }
         }
+
         video.src = src
       })
     })
 
-    // 執行所有預載
-    Promise.all([...imagePromises, ...videoPromises]).catch(() => {
-      // 確保即使有錯誤也能完成載入
-      setIsComplete(true)
-    })
+    // 等待所有資源載入完成
+    Promise.all([...imagePromises, ...videoPromises])
+      .then(() => {
+        targetProgressRef.current = 100
+        setTargetProgress(100)
+      })
+      .catch(() => {
+        targetProgressRef.current = 100
+        setTargetProgress(100)
+      })
 
-    // 設定最大載入時間（5 秒後強制完成）
+    // 全域超時（5 秒）
     const maxLoadTimer = setTimeout(() => {
-      setIsComplete(true)
+      targetProgressRef.current = 100
+      setTargetProgress(100)
     }, 5000)
 
     return () => {
@@ -95,7 +138,52 @@ function useResourcePreloader() {
     }
   }, [])
 
-  return { progress, isComplete }
+  // useEffect #2: 平滑進度動畫（只啟動一次，使用 ref 追蹤目標進度）
+  useEffect(() => {
+    let animationFrameId: number
+    let isRunning = true
+
+    const animateProgress = () => {
+      if (!isRunning) return
+
+      setDisplayProgress((current) => {
+        const target = targetProgressRef.current
+
+        if (current >= target) {
+          return current
+        }
+
+        const distance = target - current
+        const increment = Math.max(1, distance * 0.1)
+        const next = Math.min(current + increment, target)
+        const floored = Math.floor(next)
+
+        return floored
+      })
+
+      animationFrameId = requestAnimationFrame(animateProgress)
+    }
+
+    animationFrameId = requestAnimationFrame(animateProgress)
+
+    return () => {
+      isRunning = false
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  // useEffect #3: 完成邏輯
+  useEffect(() => {
+    if (displayProgress >= 100 && targetProgress >= 100) {
+      const timer = setTimeout(() => {
+        setIsComplete(true)
+      }, 300)
+
+      return () => clearTimeout(timer)
+    }
+  }, [displayProgress, targetProgress])
+
+  return { progress: displayProgress, isComplete }
 }
 
 export function LoadingAnimation() {
