@@ -32,7 +32,7 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-between items-center">
           <Link 
             href="/" 
             className="flex items-center hover:opacity-80 transition-opacity"
@@ -46,6 +46,9 @@ export function Navbar() {
               priority
             />
           </Link>
+          <span className="text-sm text-gray-600 dark:text-gray-400">
+            嘉思特有限公司
+          </span>
         </div>
       </div>
 

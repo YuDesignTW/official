@@ -48,7 +48,7 @@ export function Footer() {
             className="space-y-4"
           >
             <Link href="/" className="inline-block">
-              <h3 className="text-2xl font-bold">{SITE_CONFIG.name}</h3>
+              <h3 className="text-2xl font-bold">嘉思特有限公司</h3>
             </Link>
             <p className="text-gray-400 leading-relaxed">
               {SITE_CONFIG.description}
@@ -136,9 +136,14 @@ export function Footer() {
                 </li>
                 <li className="flex items-start gap-3 text-gray-400">
                   <MapPin size={18} className="mt-1" />
-                  <span>
-                    台北市內湖區內湖路三段
-                  </span>
+                  <div className="flex flex-col">
+                    <span>
+                      嘉義市東區興村街129號
+                    </span>
+                    <span className="text-sm mt-1">
+                      統一編號：60369932
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -154,7 +159,7 @@ export function Footer() {
           className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400"
         >
           <p>
-            &copy; {currentYear} {SITE_CONFIG.name}. All Rights Reserved.
+            &copy; {currentYear} 嘉思特有限公司. All Rights Reserved.
           </p>
         </motion.div>
       </div>
